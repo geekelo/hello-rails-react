@@ -3,9 +3,10 @@
 import "./controllers"
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Greeting from "./components/greeting";
 
 function App() {
-  return (<h1>Hello World!</h1>);
+  return (<Greeting />);
 }
 
 ReactDOM.render(
