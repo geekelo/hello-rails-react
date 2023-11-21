@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+// greetings.js
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchGreetings } from '../redux/greetingSlice';
 
 const Greeting = () => {
-  const [greeting, setGreeting] = useState('Loading...');
+  const dispatch = useDispatch();
+  const greeting = useSelector((state) => state.greetings.value);
 
   useEffect(() => {
-    // Fetch random greeting from the API
-    fetch('/api/greetings/random')
-      .then(response => response.json())
-      .then(data => setGreeting(data.greeting))
-      .catch(error => console.error('Error fetching greeting:', error));
-  }, []);
+    dispatch(fetchGreetings());
+  }, [dispatch]);
 
   return (
     <div>
-      <h1>Welcome to Your Rails Greetings App</h1>
+      <h2>Greeting</h2>
       <p>{greeting}</p>
     </div>
   );
